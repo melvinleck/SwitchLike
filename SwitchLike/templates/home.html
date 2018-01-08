@@ -1,0 +1,243 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<style>
+    body{
+        background-image:url("static/images/background2.jpg");
+        font-family:sans-serif;
+
+    }
+    table{
+        border-collapse: collapse;
+    }
+    th{
+        text-align:center;
+        padding:2px 8px 2px 8px;
+    }
+    td {
+        text-align:center;
+        padding:2px 8px 2px 8px;
+    }
+    caption{
+        font-weight:bold;
+        text-align:center;
+    }
+    div#calculator {
+	    border-radius:10%;
+	    background-color:rgba(200,200,200,0.3);
+	    padding:20px;
+	    position:absolute;
+	    top:40%;
+	    right:27%;
+	    width:20%;
+	    height:60%;
+
+}
+    div#minimum{
+        position:absolute;
+        top:18.5%;
+        width:58%;
+        right:1%;
+
+    }
+
+    div#mature{
+        position:absolute;
+        width:100%;
+        right:1%;
+        top:30%;
+
+    }
+    #mature1{
+        border-style:dotted;
+    }
+    #log{
+        float:right;
+    }
+
+    #btn,#btn1{
+        float:right;
+    }
+
+    .line1{
+        margin-top:5px;
+        font-weight:bold;
+        font-size:20px;
+    }
+    .img-placeholder{
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 100%
+    }
+.btn-primary{
+    background-color: #584ece;
+    border: 1px solid #584ece;
+}
+    #minimum1{
+        border-style:dotted;
+    }
+
+</style>
+<script>
+document.addEventListener("DOMContentLoaded",docIsReady);
+function docIsReady() {
+    document.getElementById("calculator").addEventListener("click", function () {
+        this.style.display = "none";
+    });
+}
+function show(){
+    document.getElementById("calculator").style.display="block";
+}
+
+function calculate(){
+    var amount=document.getElementById("amount").value;
+    var years=document.getElementById("years").value;
+    var rate=document.getElementById("rate").value;
+    var interest=amount*years*rate/100;
+    document.getElementById("potential").innerHTML=interest;
+    document.getElementById("total").innerHTML=parseInt(amount)+parseInt(interest);
+
+
+}
+window.onload=function() {
+    var today = new Date();
+    var hours = today.getHours();
+    var minutes = today.getMinutes();
+    var seconds = today.getSeconds();
+    document.getElementById("login").innerHTML=today.toDateString()+ "&nbsp;" + hours + ":" + minutes + ":" + seconds
+}
+
+    var countDownDate = new Date("Dec 31, 2017 00:00:00").getTime();
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        }, 1000);
+    var countDownDate1 = new Date("Jan 31, 2018 00:00:00").getTime();
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate1 - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("demo1").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        }, 1000);
+
+</script>
+    <label id="log">Last login:<span id="login"></span></label>
+    <div class= "container" >
+        <table width="50%" border="1" >
+            <caption>Account Balances</caption>
+            <thead>
+            <tr>
+                <th>Bank</th>
+                <th>Amount (SGD)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td ><a href="/balance">DBS</a></td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td><a href="/balance">OCBC</a></td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td><a href="/balance">UOB </a></td>
+                <td>50000</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div class="container">
+        <div id="minimum" class="col-lg-3">
+            <table align="right" id="minimum1">
+            <thead>
+            <tr>
+                <th>Bank</th>
+                <th>Acount number</th>
+                <th>Account type</th>
+                <th>Balance(SGD)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>UOB</td>
+                <td>6357-8326-7183</td>
+                <td>Savings</td>
+                <td>70.40</td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <div id="mature" class="col-lg-3">
+            <table align="right" id="mature1">
+            <caption>Fixed deposit</caption>
+            <tr>
+                <th>Bank</th>
+                <th>Acount number</th>
+                <th>Mature date</th>
+            </tr>
+            <tr>
+                <td>UOB</td>
+                <td>4312-5678-9012</td>
+                <td>11 Nov 2017</td>
+            </tr>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Promotions</h1>
+            <div class="img-placeholder" style="background-image:url(static/images/green.jpg)">
+                <p class="line1">HSBC offers interest rates of 3% for fixed deposit account</p>
+                <a href="/promotions" class="btn btn-primary">Learn more</a>
+                <button id="btn" onClick="show()"><img src="static/images/calculator-icon.png" width="20px" height="20px"/></button>
+                <label>Time left:<span id="demo"></span></label>
+            </div>
+            <br>
+            <div class="img-placeholder" style="background-image:url(static/images/green.jpg)">
+                <p class="line1">CitiBank offers interest rates of 0.31% for savings account</p>
+                <a href="/promotions" class="btn btn-primary">Learn more</a>
+                <button id="btn1" onClick="show()"><img src="static/images/calculator-icon.png" width="20px" height="20px"/></button>
+                <label>Time left:<span id="demo1"></span></label>
+            </div>
+    </div>
+    <div id="calculator" style="display:none">
+	    <h1>Calculator</h1>
+	    <label>Amount:
+		    <input type="text" id="amount"/>
+	    </label>
+	    <label>No. of years:
+		    <input type="number" id="years"/>
+	    </label>
+        <label>Interest Rate:
+		    <input type="number" id="rate"/>
+	    </label>
+        <button onclick="calculate()">Calculate</button>
+        <br>
+        <label>potential gain:
+            <span id="potential"></span>
+	    </label>
+        <label>How much you will have eventually:
+            <span id="total"></span>
+	    </label>
+
+    </div>
+
+{% endblock %}

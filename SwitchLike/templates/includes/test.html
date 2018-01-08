@@ -1,0 +1,38 @@
+        $(document).ready(function () {
+                $('select').val();
+                if ($(this).attr('value') == 'DBS') {
+                    $('#dbs').show();
+                    $('#ocbc').hide();
+                    $('#uob').hide();
+
+                }
+                else if ($(this).attr('value') == 'OCBC') {
+                    $('#ocbc').show();
+                    $('#uob').hide();
+                    $('#dbs').hide();
+                }
+                else {
+                    $('#uob').hide();
+                    $('#ocbc').hide();
+                    $('#dbs').hide();
+                }
+            });
+
+        var today = new Date();
+    var hours = today.getHours();
+    var minutes = today.getMinutes();
+    var seconds = today.getSeconds();
+        today.toDateString()+ "&nbsp;" + hours + ":" + minutes + ":" + seconds
+
+    <label id="log">Last login:<span id="login"></span></label>
+            div#calculator {
+	    border-radius:10%;
+	    background-color:rgba(200,200,200,0.3);
+	    padding:20px;
+	    position:absolute;
+	    top:40%;
+	    right:27%;
+	    width:20%;
+	    height:50%;
+
+}

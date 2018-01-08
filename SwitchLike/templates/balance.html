@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<style>
+    td,th{
+        text-align:center;
+    }
+</style>
+<script>
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".bank").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".bank").hide();
+            }
+        });
+    }).change();
+});
+
+</script>
+    <select id="selectOption">
+        <option value="DBS" >DBS</option>
+        <option value="OCBC" >OCBC</option>
+        <option value="UOB" >UOB</option>
+        <option value="HSBC" >HSBC</option>
+    </select>
+    <div class="DBS bank" >
+        <table border="1" width="100%">
+        <tr>
+            <th>Account No.</th>
+            <th>Account Type</th>
+            <th>Matured Date</th>
+            <th>Amount(SGD)</th>
+
+        </tr>
+        <tr>
+            <td>4827-6252-1341</td>
+            <td>Savings</td>
+            <td>-</td>
+            <td>434.00</td>
+        </tr>
+        </table>
+    </div>
+    <div class="OCBC bank">
+        <table border="1" width="100%">
+        <tr>
+            <th>Account No.</th>
+            <th>Account Type</th>
+            <th>Matured Date</th>
+            <th>Amount(SGD)</th>
+
+        </tr>
+        <tr>
+            <td>6237-2366-7355</td>
+            <td>Current</td>
+            <td>-</td>
+            <td>705.50</td>
+        </tr>
+        </table>
+    </div>
+    <div class="UOB bank" >
+        <table border="1" width="100%">
+        <tr>
+            <th>Account No.</th>
+            <th>Account Type</th>
+            <th>Matured Date</th>
+            <th>Amount(SGD)</th>
+        </tr>
+        <tr>
+            <td>12345-5678-1111</td>
+            <td>Savings</td>
+            <td>-</td>
+            <td>1534.00</td>
+        </tr>
+        <tr>
+            <td>4312-5678-9012</td>
+            <td>Fixed Deposit</td>
+            <td>-</td>
+            <td>5000.00</td>
+        </tr>
+        </table>
+    </div>
+    <div class="HSBC bank" >
+        <table border="1" width="100%">
+        <tr>
+            <th>Account No.</th>
+            <th>Account Type</th>
+            <th>Matured Date</th>
+            <th>Amount(SGD)</th>
+        </tr>
+        {% for balance in balances %}
+
+        <tr>
+            <td>4773-2384-8475</td>
+            <td>Savings</td>
+            <td>-</td>
+            <td>636.30</td>
+        </tr>
+        </table>
+    </div>
+
+
+{% endblock %}

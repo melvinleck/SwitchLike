@@ -1,0 +1,119 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<style>
+    td,th{
+        text-align:center;
+    }
+</style>
+<script>
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".bank").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".bank").hide();
+            }
+        });
+    }).change();
+});
+
+</script>
+    <select id="selectOption">
+        <option value="DBS" >DBS</option>
+        <option value="OCBC" >OCBC</option>
+        <option value="UOB" >UOB</option>
+    </select>
+    <div class="DBS bank" >
+        <table border="1" width="100%">
+        <tr>
+            <th>Account No.</th>
+            <th>Account Type</th>
+            <th>Matured Date</th>
+            <th>Amount(SGD)</th>
+
+        </tr>
+        <tr>
+            <td>111-111-111-1</td>
+            <td>Savings</td>
+            <td>-</td>
+            <td>5000</td>
+        </tr>
+        <tr>
+            <td>222-222-222-2</td>
+            <td>Fixed Deposit</td>
+            <td>30-12-2017</td>
+            <td>3000</td>
+        </tr>
+        <tr>
+            <td>333-333-333-3</td>
+            <td>Current</td>
+            <td>-</td>
+            <td>1000</td>
+        </tr>
+        </table>
+    </div>
+     <div class="OCBC bank">
+        <table border="1" width="100%">
+        <tr>
+            <th>Account No.</th>
+            <th>Account Type</th>
+            <th>Matured Date</th>
+            <th>Amount(SGD)</th>
+
+        </tr>
+        <tr>
+            <td>111-111-111</td>
+            <td>Savings</td>
+            <td>-</td>
+            <td>5000</td>
+        </tr>
+        <tr>
+            <td>222-222-222</td>
+            <td>Fixed Deposit</td>
+            <td>30-12-2017</td>
+            <td>3000</td>
+        </tr>
+        <tr>
+            <td>333-333-333</td>
+            <td>Current</td>
+            <td>-</td>
+            <td>1000</td>
+        </tr>
+        </table>
+    </div>
+     <div class="UOB bank" >
+        <table border="1" width="100%">
+        <tr>
+            <th>Account No.</th>
+            <th>Account Type</th>
+            <th>Matured Date</th>
+            <th>Amount(SGD)</th>
+
+        </tr>
+        <tr>
+            <td>111-111-11</td>
+            <td>Savings</td>
+            <td>-</td>
+            <td>5000</td>
+        </tr>
+        <tr>
+            <td>222-222-22</td>
+            <td>Fixed Deposit</td>
+            <td>30-12-2017</td>
+            <td>3000</td>
+        </tr>
+        <tr>
+            <td>333-333-33</td>
+            <td>Current</td>
+            <td>-</td>
+            <td>1000</td>
+        </tr>
+        </table>
+    </div>
+
+{% endblock %}
